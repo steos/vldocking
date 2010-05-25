@@ -155,7 +155,7 @@ public class DockView extends JPanel implements DockDropReceiver, SingleDockable
     
     // allow resizing  of split pane beyond minimum size
     // could be replaced by adding a JScrollPane instead of panels
-    setMinimumSize(new Dimension(30,30));
+//    setMinimumSize(new Dimension(30,30));
     
   }
   

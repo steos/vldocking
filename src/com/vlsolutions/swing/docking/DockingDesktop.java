@@ -2137,6 +2137,19 @@ public void close(Dockable dockable){
       
       removeFromTabbedGroup(dockable); // 2005/07/13
       
+      // remove the autohide button when closing
+      AutoHideButton btn = autoHideButtons.get(dockable.getDockKey());
+      if (btn != null)
+      {
+          btn.setVisible(false);
+          if (borderPanes[btn.getZone()].getVisibleButtonCount() == 0){
+              // hide button panel if no more buttons (to avoid a remaining visible border)
+              borderPanes[btn.getZone()].setVisible(false);
+              revalidate();
+          }
+          autoHideButtons.remove(dockable.getDockKey());
+      }
+      
       context.setDockableState(dockable, new DockableState(this, dockable,
           DockableState.Location.CLOSED, currentState.getPosition()));
       dockable.getDockKey().setLocation(DockableState.Location.CLOSED);
@@ -2326,6 +2339,7 @@ public void setAutoHide(Dockable dockable, boolean hide){
       }
       
       expandPanel.remove(dockable);
+      autoHideButtons.remove(dockable.getDockKey());
       
       show(dockable, dae);
       
