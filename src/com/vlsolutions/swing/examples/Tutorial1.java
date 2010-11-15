@@ -21,7 +21,7 @@ public class Tutorial1 extends JFrame {
 	MyJTable tablePanel = new MyJTable();
 
 	public Tutorial1() {
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().add(editorPanel, BorderLayout.CENTER);
 		getContentPane().add(treePanel, BorderLayout.WEST);
 		getContentPane().add(buttonGrid, BorderLayout.NORTH);
